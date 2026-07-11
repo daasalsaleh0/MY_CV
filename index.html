@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية | CV - Daas Alsaleh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 5px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .sidebar .job-title {
+            text-align: center;
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .contact-item span:first-child {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        html[dir="ltr"] .contact-item span:first-child {
+            margin-right: 10px;
+            margin-left: 0;
+        }
+
+        .skill-bar {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .skill-progress {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-right: 20px;
+            border-right: 3px solid #667eea;
+        }
+
+        html[dir="ltr"] .experience-item, 
+        html[dir="ltr"] .education-item {
+            padding-right: 0;
+            padding-left: 20px;
+            border-right: none;
+            border-left: 3px solid #667eea;
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .company, .institution {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .links-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .link-icon {
+            font-size: 24px;
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        html[dir="ltr"] .link-icon {
+            margin-right: 10px;
+            margin-left: 0;
+        }
+
+        .link-text {
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+            .language-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .links-section {
+                grid-template-columns: 1fr;
+            }
+            .language-toggle {
+                top: 10px;
+                left: 10px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <span id="langBtn">English</span>
+    </button>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-image">
+                <img src="https://image.qwenlm.ai/public_source/3da507c4-6daa-4a15-a036-54833ac90027/1c34c0f44-fcca-4f3e-8351-c18e542cd424.png" alt="Profile Photo">
+            </div>
+            <h1 data-ar="دعاس الصالح" data-en="Daas Alsaleh">دعاس الصالح</h1>
+            <div class="job-title" data-ar="مهندس تقنية معلومات ومطور أنظمة مدمجة" data-en="IT & Embedded Systems Engineer">مهندس تقنية معلومات ومطور أنظمة مدمجة</div>
+
+            <div class="sidebar-section">
+                <h3 data-ar="معلومات الاتصال" data-en="Contact Info">معلومات الاتصال</h3>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>daas.050.050@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span dir="ltr">+963 994 024 328</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 data-ar="المهارات" data-en="Skills">المهارات</h3>
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span data-ar="C++ & SQL (حل المشكلات)" data-en="C++ & SQL (Problem Solving)">C++ & SQL (حل المشكلات)</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span data-ar="تطوير الويب & SEO" data-en="Web Dev & SEO (HTML/JS)">تطوير الويب & SEO</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span data-ar="الأنظمة المدمجة (Raspberry Pi/Pixhawk)" data-en="Embedded Systems (Raspberry Pi/Pixhawk)">الأنظمة المدمجة (Raspberry Pi/Pixhawk)</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span data-ar="الذكاء الاصطناعي والرؤية الحاسوبية" data-en="AI & Computer Vision Integration">الذكاء الاصطناعي والرؤية الحاسوبية</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 data-ar="اللغات" data-en="Languages">اللغات</h3>
+                <div class="contact-item">
+                    <span data-ar="العربية" data-en="Arabic">العربية</span>
+                    <span data-ar="- اللغة الأم" data-en="- Native">- اللغة الأم</span>
+                </div>
+                <div class="contact-item">
+                    <span data-ar="الإنجليزية" data-en="English">الإنجليزية</span>
+                    <span data-ar="- متقدم" data-en="- Advanced">- متقدم</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2 data-ar="النبذة المهنية" data-en="Professional Summary">النبذة المهنية</h2>
+                <p class="about-text" data-ar="مهندس تقنية معلومات ومطور أنظمة مدمجة وويب، يتمتع بقدرة عالية على حل المشكلات البرمجية المعقدة. أمتلك خبرة عملية في بناء الطائرات المسيرة (UAVs) وتطوير أنظمة القيادة الذاتية عبر دمج تقنيات الذكاء الاصطناعي والرؤية الحاسوبية. إلى جانب كفاءتي في تصميم قواعد البيانات (SQL) وتحسين محركات البحث (SEO) وتطوير الهوية الرقمية للشركات." data-en="IT Engineer, Embedded Systems, and Web Developer with high proficiency in complex problem-solving. Experienced in building autonomous UAVs by integrating AI technologies and computer vision. Skilled in SQL database design, SEO optimization, and developing digital corporate identities.">
+                    مهندس تقنية معلومات ومطور أنظمة مدمجة وويب، يتمتع بقدرة عالية على حل المشكلات البرمجية المعقدة. أمتلك خبرة عملية في بناء الطائرات المسيرة (UAVs) وتطوير أنظمة القيادة الذاتية عبر دمج تقنيات الذكاء الاصطناعي والرؤية الحاسوبية. إلى جانب كفاءتي في تصميم قواعد البيانات (SQL) وتحسين محركات البحث (SEO) وتطوير الهوية الرقمية للشركات.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 data-ar="الخبرات المهنية والمشاريع" data-en="Experience & Key Projects">الخبرات المهنية والمشاريع</h2>
+                <div class="experience-item">
+                    <h3 data-ar="مطور ويب وأخصائي هوية رقمية" data-en="Web Developer & Digital Identity Specialist">مطور ويب وأخصائي هوية رقمية</h3>
+                    <div class="company" data-ar="VTEKE - الأتمتة الصناعية والحلول الكهربائية" data-en="VTEKE - Industrial Automation">VTEKE - الأتمتة الصناعية والحلول الكهربائية</div>
+                    <div class="date" data-ar="مستمر" data-en="Present">مستمر</div>
+                    <p class="description" data-ar="• تطوير وتحسين بنية الموقع vteke.com.tr باستخدام (HTML, JS).<br>• تطبيق استراتيجيات SEO متقدمة وإنشاء روابط نظيفة (Clean URLs).<br>• إدارة الأصول الرقمية والهوية البصرية للعلامة التجارية." data-en="• Developed and optimized the vteke.com.tr website using HTML and JS.<br>• Implemented advanced SEO strategies and Clean URLs structure.<br>• Managed digital assets and visual corporate identity.">
+                        • تطوير وتحسين بنية الموقع vteke.com.tr باستخدام (HTML, JS).<br>• تطبيق استراتيجيات SEO متقدمة وإنشاء روابط نظيفة (Clean URLs).<br>• إدارة الأصول الرقمية والهوية البصرية للعلامة التجارية.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <h3 data-ar="طائرة براءة المسيرة الذكية (مشروع التخرج)" data-en="Bara'a Smart Drone (Graduation Project)">طائرة "براءة" المسيرة الذكية (مشروع التخرج)</h3>
+                    <div class="company" data-ar="جامعة IUST" data-en="IUST University">جامعة IUST</div>
+                    <div class="date" data-ar="2026" data-en="2026">2026</div>
+                    <p class="description" data-ar="• هندسة وتجميع طائرة مسيرة (Quad X) بمتحكم Pixhawk 2.4.8 ونظام ArduPilot.<br>• دمج حاسوب Raspberry Pi 5 وكاميرا لتشغيل نماذج ذكاء اصطناعي (TFLite) للقيادة الذاتية.<br>• تنفيذ عمليات المعايرة الدقيقة للاتصالات اللاسلكية والمحركات (ESC)." data-en="• Engineered a Quad X autonomous drone using Pixhawk 2.4.8 and ArduPilot.<br>• Integrated Raspberry Pi 5 and AI models (TFLite) for computer vision capabilities.<br>• Calibrated ESC motors and telemetry systems for stable flight.">
+                        • هندسة وتجميع طائرة مسيرة (Quad X) بمتحكم Pixhawk 2.4.8 ونظام ArduPilot.<br>• دمج حاسوب Raspberry Pi 5 وكاميرا لتشغيل نماذج ذكاء اصطناعي (TFLite) للقيادة الذاتية.<br>• تنفيذ عمليات المعايرة الدقيقة للاتصالات اللاسلكية والمحركات (ESC).
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <h3 data-ar="تطوير خوارزميات معمارية الحواسيب" data-en="Computer Architecture Algorithm Development">تطوير خوارزميات معمارية الحواسيب</h3>
+                    <div class="company" data-ar="مشروع أكاديمي" data-en="Academic Project">مشروع أكاديمي</div>
+                    <div class="date" data-ar="2026" data-en="2026">2026</div>
+                    <p class="description" data-ar="• كتابة وتنفيذ احترافي بلغة C++ لخوارزمية بوث (Booth's Algorithm) مع جداول التتبع بمستوى الأجهزة (Hardware-level)." data-en="• Professional C++ implementation of Booth's Algorithm for signed multiplication with trace tables at the hardware level.">
+                        • كتابة وتنفيذ احترافي بلغة C++ لخوارزمية بوث (Booth's Algorithm) مع جداول التتبع بمستوى الأجهزة (Hardware-level).
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 data-ar="التعليم" data-en="Education">التعليم</h2>
+                <div class="education-item">
+                    <h3 data-ar="بكالوريوس في كلية تكنولوجيا المعلومات والهندسة" data-en="Bachelor of Information Technology & Engineering">بكالوريوس في كلية تكنولوجيا المعلومات والهندسة</h3>
+                    <div class="institution" data-ar="الجامعة الدولية الخاصة للعلوم والتكنولوجيا (IUST)" data-en="International University for Science & Technology (IUST)">الجامعة الدولية الخاصة للعلوم والتكنولوجيا (IUST)</div>
+                    <div class="date" data-ar="دفعة 2026" data-en="Class of 2026">دفعة 2026</div>
+                    <p class="description" data-ar="الرقم الجامعي: 202010974" data-en="Student ID: 202010974">
+                        الرقم الجامعي: 202010974
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 data-ar="الشهادات والدورات" data-en="Certificates & Courses">الشهادات والدورات</h2>
+                <div class="experience-item">
+                    <h3 data-ar="حل المشكلات البرمجية (Problem Solving)" data-en="Problem Solving">حل المشكلات البرمجية (Problem Solving)</h3>
+                    <div class="company" data-ar="أكاديمية Programming Advices" data-en="Programming Advices Academy">أكاديمية Programming Advices</div>
+                </div>
+                <div class="experience-item">
+                    <h3 data-ar="الأنظمة المدمجة - Raspberry Pi 5" data-en="Embedded Systems - Raspberry Pi 5">الأنظمة المدمجة - Raspberry Pi 5</h3>
+                    <div class="company" data-ar="كورس تدريبي متقدم" data-en="Advanced Training Course">كورس تدريبي متقدم</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 data-ar="الروابط" data-en="Links">الروابط</h2>
+                <div class="links-section">
+                    <a href="https://linkedin.com/in/daas-alsaleh" class="link-item" target="_blank">
+                        <span class="link-icon">💼</span>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/daas-alsaleh" class="link-item" target="_blank">
+                        <span class="link-icon">💻</span>
+                        <span class="link-text">GitHub</span>
+                    </a>
+                    <a href="https://vteke.com.tr" class="link-item" target="_blank">
+                        <span class="link-icon">🌐</span>
+                        <span class="link-text" data-ar="موقع VTEKE (أعمالي)" data-en="VTEKE (Portfolio)">موقع VTEKE (أعمالي)</span>
+                    </a>
+                    <a href="mailto:daas.050.050@gmail.com" class="link-item">
+                        <span class="link-icon">📧</span>
+                        <span class="link-text" data-ar="مراسلة عبر الإيميل" data-en="Send Email">مراسلة عبر الإيميل</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const langBtn = document.getElementById('langBtn');
+            
+            if (currentLang === 'ar') {
+                currentLang = 'en';
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                langBtn.textContent = 'العربية';
+            } else {
+                currentLang = 'ar';
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                langBtn.textContent = 'English';
+            }
+
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            elements.forEach(element => {
+                element.innerHTML = element.getAttribute('data-' + currentLang);
+            });
+        }
+    </script>
+</body>
+</html>
